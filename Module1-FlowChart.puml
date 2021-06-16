@@ -1,0 +1,16 @@
+@startuml
+
+start
+
+:Provide Driving Distance;
+:Provide Gasoline Cost per Gallon;
+:Provide Miles per Gallon;
+:Provide Parking Fees;
+:Provide Toll Fees;
+:Calculate \n Gasoline Cost = (Driving Distance / Miles per Gallon) X Cost per Gallon;
+:Calculate Total Cost\n Total Cost = Gasoline Cost + Parking Fees + Toll Fees;
+
+:Print driving details and cost;
+
+end
+@enduml
