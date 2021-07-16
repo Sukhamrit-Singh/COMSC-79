@@ -1,0 +1,92 @@
+// schedule.c pseudocode
+
+// define macro for each day of week with different values
+#define MONDAY 
+#define TUESDAY  //shifted 1 to left
+#define WEDNESDAY //shifted 2 to left
+#define THURSDAY //shifted 3 to left
+#define FRIDAY //shifted 4 to left
+#define SATURDAY //shifted 5 to left
+#define SUNDAY //shifted 6 to left
+
+// define language macro
+#define LANG (0 = English; 1 = German)
+
+// define global constants to be easily referenced
+// at many places
+
+// preprocessor conditions
+#if LANG == 0
+Set language English
+#elif LANG == 1
+Set language German
+
+// create class_detail structure
+Declare structure class_details {
+	//its members
+	char name
+	unsigned int days_in_week (7 bits)
+	unsigned int  strt_hr (5 bit)
+	unsigned int strt_min (6 bit)
+	unsigned int end_hr (5 bit)
+	unsigned int end_min (6 bit)
+	
+}
+
+// create method to check if classes overlap
+Bool has_conflict (struct class_details a, struct class_details b) {
+	
+	/*
+	create boolean to return and create 
+	variables that store the starting and ending times
+	of the classes in minutes
+	*/
+
+	if (days overlap)
+		if (time overlap)
+			bool overlap = true
+	else
+		false
+		
+	return boolean (overlap)
+}
+
+// create method to display the results
+Void display (struct class_details a, struct class_details b) {
+
+	/*
+	create variables to convert the unsigned int to
+	binary to find which days classes are held
+	*/
+	
+	//print all details of the overlapping classes
+	print(class1, days, time, overlaps with, class 2, days, time)
+}
+
+Int main(void) {
+	// create array of structured of class_details structure
+	declare class_details subjects[] = {
+	      {"ECON 101", MONDAY | WEDNESDAY, 9, 15, 11, 35},
+        	      {"PHYS 002", TUESDAY | THURSDAY, 10, 25, 13, 00},
+	      {"COMSC 079C", MONDAY, 7, 45, 9, 30},
+	      {"ACCTG 0063A", WEDNESDAY | FRIDAY, 10, 15, 12, 35},
+	      {"CHEM 001", TUESDAY | THURSDAY, 17, 00, 19, 25},
+	      {"MATH 017", MONDAY | TUESDAY | WEDNESDAY | THURSDAY, 13, 05, 15, 45},
+	      {"ART 099", TUESDAY | THURSDAY, 12, 05, 16, 35}
+	};
+
+	// create a nested for loop to go through each class and compare
+	// whether each class overlaps or not
+	
+	for (I = 0; I < 7; I++) {
+		for(j = I + 1; j < 7; j++) {
+			conflict = has_conflict(subjects[I], subjects[j])
+			if (conflicts == true) {
+				display(subjects[I], subjects[j])
+			}
+		}
+	}
+
+	//conclude
+	return 0;
+}
