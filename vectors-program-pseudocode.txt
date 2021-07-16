@@ -1,0 +1,87 @@
+// test_vectors.c pseudocode
+
+// create display method
+void display_vector(const vec2d v) {
+    print(x, y) //print in x, y format and to 3 decimal places
+}
+
+// create a method to calculate the magnitude of a vector
+double magnitude(const vec2d v) {
+    
+    Declare magnitude = square root (x^2 + y^2)
+    Return magnitude
+}
+
+// create an add vector method
+vec2d add(const vec2d v1, const vec2d v2) {
+    Declare vector 3 = (v1.x + v2.x, v1.y + v2.y
+    Return vector 3
+}
+
+
+// create a scale vector method
+vec2d scale(const vec2d v, const double factor) {
+    declare vector 4 = (v.x * factor, v.y * factor)
+    Return vector 4 
+}
+
+// create a dot_product method
+double dot_product(const vec2d v1, const vec2d v2) {
+    Declare double sum = (v1.x * v2.x) + (v1.y * v2.y)
+    Return sum
+}
+
+// create main function
+Int main (void) {
+    Declare user_input = 0
+    Declare vec2d input_vector1 = {0, 0};
+    Declare vec2d input_vector2 = {0, 0};
+    Declare double scalar = 0;
+	
+    While (user_input != 4) {
+	// prompt user to enter input
+	print("enter input")
+	scan("%d", &user_input)
+	if (user_input == 1) {
+	   // prompt user to enter 2 vector inputs
+	   // gather user input into variables
+	    print("enter data for first vector")
+	    scanf("%lf %lf", &input_vector1.x, &input_vector1.y)
+	    print("enter data for second vector")
+	    scanf("%lf %lf", &input_vector2.x, &input_vector2.y)
+
+	    // pass the data to the add method and print results
+	    declare vec2d sum = add(input_vector1, input_vector2)
+	    display_vector(sum)
+	} else if (user_input == 2) {
+	   // prompt user to enter vector inputs and scale factor
+	   // gather user input into variables
+	    print("enter data for first vector")
+	    scanf("%lf %lf", &input_vector1.x, &input_vector1.y)
+	    print("enter data for scale factor")
+	    scanf("%lf", &scalar);
+
+	    // pass the data to the scale method and print results
+	    declare vec2d scale_vector = scale(input_vector1, scalar)
+	    display_vector(sum)
+	} else if (user_input == 3) {
+	   // prompt user to enter 2 vector inputs
+	   // gather user input into variables
+	    print("enter data for first vector")
+	    scanf("%lf %lf", &input_vector1.x, &input_vector1.y)
+	    print("enter data for second vector")
+	    scanf("%lf %lf", &input_vector2.x, &input_vector2.y)
+
+	    // pass the data to the dot_product method and print results
+	    declare double product = dot_product(input_vector1, input_vector2)
+	    print("%f", product)
+	} else {
+	    // if input is less than 1 or greater than 4
+	    print("Invalid input, please re-enter")
+	}
+    }
+    print("Goodbye")
+    
+    // conclude program
+    Return 0
+}
