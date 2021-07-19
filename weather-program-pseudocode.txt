@@ -1,0 +1,142 @@
+// weather.c pseudocode
+
+// declare pointers to in and out files
+Declare FILE *in, *out;
+
+// create main function
+Int main (void) {
+
+    // declare string arrays for names of in and out files
+    declare char inName[64], outName[64]; // will set inName to the San Jose temperature file
+
+    // declare a string array to store each line
+    Declare char input[28];
+
+    // declare a list of months which will be called when outputting the data
+    Declare char months_list[12][9] = {"Jan 2020", "Feb 2020", "Mar 2020", 
+        "Apr 2020", "May 2020", "Jun 2020", "Jul 2020", "Aug 2020",
+        "Sep 2020", "Oct 2020", "Nov 2020", "Dec 2020"};
+
+    // Declare variables that will store data on the current and past month, the days in a month,
+    // and the total max and min temperatures of the month
+    Declare int prev_month = 0;
+    Declare int current_month = 0;
+    Declare double month_max_total = 0;
+    Declare double month_min_total = 0;
+    Declare int month_days = 0;
+
+    // create if statement to check if input file can be opened
+    if ( (in = fopen (inName, "r"))  ==  NULL ) {
+        printf ("Can't open %s for reading.\n", inName);
+    }
+
+    // prompt user to enter name if output file
+    printf ("Enter name of output file: ");
+    scanf ("%s", outName);
+
+    // create a while loop to check if output function can be opened
+    // if can not, prompt user to enter name again
+
+    while ((out = fopen (outName, "w"))  ==  NULL ) {
+        printf ("Can't open %s for writing.\n\n", outName);
+
+        // prompt user again to enter file output name
+        printf ("Enter name of output file: ");
+        scanf ("%s", outName);
+    }
+
+    // declare a row counter to go through each row in input file
+    Declare int row = 0;
+
+    // create while loop to keep running until no more lines in input file
+    while(1) {
+
+	// declare char pointers to hold tokens of each line
+        Declare char *year = "";
+        Declare char *month = "";
+        Declare char *day = "";
+        Declare char *max_temp = "";
+        Declare char *min_temp = "";
+
+	// create if statement to check if last line in input file has been reached
+	if (now more lines) {
+	   fprintf(out, "%s   %.2f    %.2f\n", months_list[prev_month - 1], 
+                  (month_max_total/month_days), (month_min_total/month_days));
+            break;
+	}
+
+	// create if statement to only output once per month
+	if (strlen(input) == 1)
+            continue;
+
+	// creating a token pointer to tokenize each part of the line based 
+        // on the space delimiter 
+	declare char *token = strtok(input, " ");
+        Declare int i = 0;
+
+	// declare while loop which will assign each token to a variable
+        // until there are no more tokens in the line
+	while(token != NULL) {
+            if (i == 0) {
+                year = token;
+            } else if (i == 1) {
+                month = token;
+            } else if (i == 2) {
+                day = token;
+            } else if (i == 3) {
+                max_temp = token;
+            } else if (i == 4) {
+                min_temp = token;
+            }
+
+	  // when nothing left to tokenize
+	  token = strtok(NULL, " ");
+
+	  I++
+	
+        }
+
+	// set current month to month token
+	set curr_month = atoi(month);
+
+	// create if statement to check whether current and previous month values
+	// are the same or not. If they are not, calculate averages for the month and print
+	if (curr_month != prev_month) {
+
+            if ( prev_month != 0 ) {    
+                // month changed, show prev month avg
+                fprintf(out, "%s   %.2f    %.2f\n", months_list[prev_month - 1], 
+                    (month_max_total/month_days), (month_min_total/month_days));
+            }
+
+            // set the value of previous month equal to current month
+            Set prev_month = curr_month;
+
+            // restart the month_days counter and start setting totals
+            // from the restart based on the new month
+            Set month_max_total = atof(max_temp);
+            Set month_min_total = atof(min_temp);
+            Set month_days = 1;
+
+	}
+
+	// if current and previous month values are the same {
+	   set month_max_total += atof(max_temp);
+            Set month_min_total += atof(min_temp);
+            Set month_days++;
+
+	}
+
+	// increment row to go to next row
+	row++
+
+    }
+
+    //close input and output files
+    fclose (in);
+    fclose (out);
+    
+    // conclude program
+    return 0;
+
+}
