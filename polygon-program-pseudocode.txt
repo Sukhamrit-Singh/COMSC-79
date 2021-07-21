@@ -1,0 +1,144 @@
+// polygon_test.cpp pseudocode
+
+
+// create a class RegularPolygon
+Declare class Regular Polygon {
+
+    // define private variables
+    Private:
+	declare int nSides;
+	declare double sideLength;
+
+    // define public constructors and methods
+    Public:
+	
+	// create no-argument constructor
+	declare RegularPolygon() {
+	
+	    // set variables to default values
+	    set nSides = 3;
+	    set sideLength = 1;
+	}
+
+	// create constructor that creates a regular polygon 
+	// with the specified number of sides and length of side 
+	declare RegularPolygon(int sides, double length) {
+	
+	    // set variables to parameter values and call getter
+	    // and setter methods
+            setNSides(sides);
+            setSideLength(length);
+         }
+
+	// create getter and setter methods for both variables
+	// setter method for nSides
+	declare void setNSides(int sides) {
+
+	    // if passed value is less than 3, set it to 3
+            Set nSides = std::max(3, sides);
+        }
+        
+        // getter method for nSides
+        Declare int getNSides() {
+
+            return nSides;
+        }
+
+        // setter method for sideLength. If passed value is
+        // less than 0, the value of sideLength will be abs of that value
+        Declare void setSideLength(int length) {
+
+            if (length < 0) {
+                Set sideLength = abs(length);
+            }
+
+            Set sideLength = length;
+        }
+     
+        // getter method for sideLength
+        Declare int getSideLength() {
+
+            return sideLength;
+        }
+
+	// create display method 
+
+	declare void display() {
+            printf("Number of sides: %i    Side length: %.2f", 
+                nSides, sideLength);
+        } 
+
+	// create getPerimeter method
+	declare double getPerimeter() {
+
+            // calculating the perimeter
+            Set double perimeter = nSides * sideLength;
+
+            // returning the value of perimeter
+            return perimeter;
+        }
+
+	// create getArea method
+	declare double getArea() {
+
+            // calculating the area using some functions from the
+            // cmath library
+            Set double area = (nSides * pow(sideLength, 2)) /
+                (4 * tan(M_PI / nSides));
+
+            // returning the value of area
+            return area;
+        }
+
+};
+
+// create main function
+
+Int main (void) {
+
+    // create default object from class
+
+    Declare RegularPolygon polyA;
+
+    // call perimeter and area methods and store values
+    // call display method to display traits and print perimeter and area
+
+    Set double perimeter1 = polyA.getPerimeter();
+    Set double area1 = polyA.getArea();
+    printf("\nNormal Polygon\n");
+    Call polyA.display();
+    printf("\nPerimeter: %.2f\nArea: %.2f\n\n", perimeter1,
+        area1);
+
+    
+    // create object from class with parameters
+    RegularPolygon polyB(6, 4.0);
+
+    // call perimeter and area methods and store values
+    // call display method to display traits and print perimeter and area
+
+    Set double perimeter2 = polyB.getPerimeter();
+    Set double area2 = polyB.getArea();
+    printf("Polygon 2\n");
+    call polyB.display();
+    printf("\nPerimeter: %.2f\nArea: %.2f\n\n", perimeter2,
+        area2);
+
+    // create object from class with parameters
+    RegularPolygon polyC(4, 7.5);
+
+    // call perimeter and area methods and store values
+    // call display method to display traits and print perimeter and area
+
+    Set double perimeter3 = polyC.getPerimeter();
+    Set double area3 = polyC.getArea();
+    printf("Polygon 3\n");
+    Call polyC.display();
+    printf("\nPerimeter: %.2f\nArea: %.2f\n\n", perimeter3,
+        area3);
+
+
+    // conclude program
+    Return 0;
+
+}
